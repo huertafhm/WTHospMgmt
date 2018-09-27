@@ -10,7 +10,6 @@ Front end (HTML, CSS)     Hossain, Haiyang Wu
 Database  (MySQL)         Han,  Weiyue Ju
 PHP                       Fernando, Kaiyuan, Jiazheng
 
-Hossain will work on the Front end over this weekend
 
 PHP tutorial:
 https://www.lynda.com/PHP-tutorials/PHP-MySQL-Essential-Training-1-Basics/587674-2.html?srchtrk=index%3a1%0alinktypeid%3a2%0aq%3aphp+mysql%0apage%3a1%0as%3arelevance%0asa%3atrue%0aproducttypeid%3a2
