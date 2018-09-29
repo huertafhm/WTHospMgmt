@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  background: #b5d5e8;
+}
+h1 {font-size: 300%}
+h2 {font-size: 200%}
+form {font-size: 150%}
+</style>
+
+<body>
+<h1>Hospital Management System</h1>
+<h2>Visit History</h2>
+<form>
+  Date and time:<br>
+  <input type="date" name="Date and time"><br>
+  Doctor:<br>
+  <input type="text" name="Doctor"><br>
+  Visit Reason:<br>
+  <input type="text" name="Visit Reason"><br>
+  Doctor's suggestion:<br>
+  <input type="text" name="Doctor's suggestion"><br><br>		
+  <input type="Submit" value="Back">
+</form>
+</html>
