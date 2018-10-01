@@ -1,0 +1,15 @@
+<?php 
+$servername = "localhost";
+$username = "root";
+$password = "password";
+$dbname = "HospMgmt";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+
+
+
+
+?>
+
