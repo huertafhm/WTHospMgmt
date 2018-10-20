@@ -1,16 +1,36 @@
 <?php
-//Handle form values sent by signup.php for for signing up
+    require_once("../private/initialize.php");
 
-$firstName = isset($_POST['fName']) ? $_POST['fName'] : '';
-$lastName = isset($_POST['lName']) ? $_POST['lName'] : '';
-$email = isset($_POST['email']) ? $_POST['email'] : '';
-$dateOfBirth = isset($_POST['dob']) ? $_POST['dob'] : '';
-$password = isset($_POST['password']) ? $_POST['password'] : '';
+    //Handle form values sent by signup.php for for signing up
+    $patientName = isset($_POST['name']) ? $_POST['name'] : " ";
+    $patientMobile = isset($_POST['mobile']) ? $_POST['mobile'] : " ";;
+    $patientEmail = isset($_POST['email']) ? $_POST['email'] : " ";;
+    $patientAge = isset($_POST['age']) ? $_POST['age'] : " ";;
+    $patientGender = isset($_POST['gender']) ? $_POST['gender'] : " ";;
+    $patientpassword = isset($_POST['password']) ? $_POST['password'] : " ";;
 
-echo "Form parameters<br>";
-echo "First Name: " . $firstName . "<br>";
-echo "Last Name: " . $lastName . "<br>";
-echo "Email: " . $email . "<br>";
-echo "Date of Birth: " . $dateOfBirth . "<br>";
-echo "password: " . $password . "<br>";
+    $sql = "INSERT INTO patient ";
+    $sql .= "(name, phone, email, age, gender, password) ";
+    $sql .= "VALUES (";
+    $sql .= "'" . $patientName . "',";
+    $sql .= "'" . $patientMobile . "',";
+    $sql .= "'" . $patientEmail . "',";
+    $sql .= "'" . $patientAge . "',";
+    $sql .= "'" . $patientGender . "',";
+    $sql .= "'" . $patientpassword . "'";
+    $sql .= ")";
+    
+    $result = mysqli_query($db, $sql);
+    
+    if($result)
+    {
+        echo "<h1>Congratulation! You successfully signed up</h1>";
+    }
+    else 
+    {
+        echo mysqli_error($db);
+        db_disconnect($db);
+        exit;
+    }
+    
 ?>
