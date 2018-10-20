@@ -8,4 +8,8 @@
     define("SHARED_PATH", PRIVATE_PATH . '/shared');
 
     require_once('functions.php');
+    require_once('database.php');
+    
+    //First Connection to the database
+    $db = db_connect();
 ?>
