@@ -1,13 +1,12 @@
 <?php 
-session_start();
-require_once('../private/initialize.php'); ?>
-
-<?php 
-if ($_SESSION['userType']==1) {
-    include(SHARED_PATH . '/DoctorDashboard.php');
-} else if ($_SESSION['userType']==2) {
-    include(SHARED_PATH . '/PatientDashboard.php');
-}
+    session_start();
+    require_once('../private/initialize.php'); 
+    
+    if ($_SESSION['userType']==1) {
+        include(SHARED_PATH . '/DoctorDashboard.php');
+    } else if ($_SESSION['userType']==2) {
+        include(SHARED_PATH . '/PatientDashboard.php');
+    }
 ?>
 
 <!doctype html>
@@ -46,4 +45,7 @@ if ($_SESSION['userType']==1) {
     			</div>
     		</div>	
     	</div>
+    </body>
+</html>
+
 <?php include(SHARED_PATH . '/footer.php'); ?>

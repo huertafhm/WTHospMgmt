@@ -23,10 +23,10 @@ require_once('../private/initialize.php'); ?>
                       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                           <li class="nav-item active">
-                            <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-link text-white" href="GUI_Home.php">Home</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Appointment History</a>
+                            <a class="nav-link text-white" href="GUI_PastAppointments.php">Appointment History</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link text-white" href="GUI_CurrentAppointments.php">Current Appointments</a>

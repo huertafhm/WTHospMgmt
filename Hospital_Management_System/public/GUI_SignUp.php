@@ -4,7 +4,7 @@
 	<div class="container">
 		<h2>Sign Up</h2>
 		<div>
-			<form action="create.php" method="post">
+			<form action="./DB_RegisterPatient.php" method="post">
 				<fieldset class="form-group">
     				<div class="form-group row mt-4">
             			<label class="col-form-label col-md-2">Name</label>

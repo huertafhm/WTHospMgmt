@@ -7,7 +7,7 @@ require_once('../private/initialize.php'); ?>
 		<div class="row">
 			
     		<div class="col">
-    			<form action="DB_logIn.php" method="post">
+    			<form action="./DB_logIn.php" method="post">
     				<div class="form-group row">
     					<div class="col-sm"></div>
     					<div class="col-sm">
@@ -41,7 +41,6 @@ require_once('../private/initialize.php'); ?>
     		<div>
     		
     		</div>
-    		<
 		</div>		
 	</div>
 <?php include(SHARED_PATH . '/footer.php'); ?>

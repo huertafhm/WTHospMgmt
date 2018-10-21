@@ -63,6 +63,7 @@ CREATE TABLE appointment (
 	 patientId int(5) NOT NULL,
 	 appointmentDate datetime NOT NULL,
 	 room varchar(255),
+	 description varchar(255),
 	 
 	PRIMARY KEY(appointmentId)
 );
@@ -71,27 +72,27 @@ ALTER TABLE appointment AUTO_INCREMENT=15001;
 
 INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-09-28 09:30:00', 'A50');
 INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-09-21 10:00:00', 'A55');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-09-14 09:30:00', 'A60');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-07 09:30:00', 'B50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-09-14 10:30:00', 'A60');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-07 11:00:00', 'B50');
 INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-28 09:30:00', 'S4');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-29 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-29 09:35:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-29 19:40:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1002, 2001, '2018-09-28 09:30:00', 'S1');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1002, 2001, '2018-11-07 09:30:00', 'C502');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-29 13:30:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-29 13:00:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1001, 2001, '2018-10-29 12:30:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1002, 2001, '2018-09-28 11:30:00', 'S1');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1002, 2001, '2018-11-07 10:00:00', 'C502');
 INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1003, 2002, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1003, 2003, '2018-09-28 09:30:00', 'B80');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1004, 2004, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1004, 2005, '2018-09-28 09:30:00', 'S2');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1005, 2006, '2018-09-28 09:30:00', 'B70');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1005, 2007, '2018-09-28 09:30:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1003, 2003, '2018-09-28 10:00:00', 'B80');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1004, 2004, '2018-09-28 11:30:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1004, 2005, '2018-09-28 12:30:00', 'S2');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1005, 2006, '2018-09-28 13:00:00', 'B70');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1005, 2007, '2018-09-28 13:30:00', 'A50');
 INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1006, 2008, '2018-09-28 09:30:00', 'C20');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1006, 2009, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1007, 2010, '2018-09-28 09:30:00', 'A65');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1006, 2009, '2018-09-28 10:00:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1007, 2010, '2018-09-28 11:30:00', 'A65');
 INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1007, 2002, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1008, 2003, '2018-09-28 09:30:00', 'A102');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1008, 2004, '2018-09-28 09:30:00', 'A102');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1009, 2005, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1009, 2006, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1010, 2007, '2018-09-28 09:30:00', 'A50');
-INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1010, 2009, '2018-09-28 09:30:00', 'S2');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1008, 2003, '2018-09-28 11:30:00', 'A102');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1008, 2004, '2018-09-28 13:00:00', 'A102');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1009, 2005, '2018-09-28 10:30:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1009, 2006, '2018-09-28 11:30:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1010, 2007, '2018-09-28 09:00:00', 'A50');
+INSERT INTO appointment(doctorId, patientId, appointmentDate, room) VALUES(1010, 2009, '2018-09-28 13:30:00', 'S2');
