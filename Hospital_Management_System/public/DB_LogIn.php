@@ -19,13 +19,13 @@
         $user = mysqli_fetch_assoc($resultPatient);
         $_SESSION['userId'] = $user['patientId'];
         $_SESSION['userName'] = $user['name'];
-        header('location: GUI_PatientDashboard.php');
+        header('location: GUI_Home.php');
     } else if ($resultDoctor->num_rows > 0) {
         $_SESSION['userType'] = 1;
         $user = mysqli_fetch_assoc($resultDoctor);
         $_SESSION['userId'] = $user['doctorId'];
         $_SESSION['userName'] = $user['name'];
-        header('location: GUI_DoctorDashboard.php');
+        header('location: GUI_Home.php');
     } else {
         $_SESSION['userType'] = 0;
         header('location: Index.php');
