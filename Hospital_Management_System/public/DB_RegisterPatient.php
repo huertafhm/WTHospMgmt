@@ -22,31 +22,32 @@
     $sql .= ")";
     
     //SQL command to check existing mail
-    $sqlPatientExists = "SELECT*FROM patient where email = '$patientEmail'";
-    $sqlDoctorExists = "SELECT*FROM doctor where email = '$patientEmail'";
+    $sqlPatientExists = "SELECT count(patientId) as result FROM patient where email = '$patientEmail'";
+    $sqlDoctorExists = "SELECT count(doctorId) as result FROM doctor where email = '$patientEmail'";
     
     //Retrieve results if email is already registered in any of the tables
     $error = mysqli_query($db, $sqlPatientExists);
+    $error = mysqli_fetch_assoc($error);
+    $error = $error['result'];
     $error2 = mysqli_query($db, $sqlDoctorExists);
+    $error2 = mysqli_fetch_assoc($error2);
+    $error2 = $error2['result'];
     
     //If there were records, display an alert message
     if ($error || $error2){
         echo "<script type=\"text/javascript\">window.alert('That email is already registered!');
-        window.location.href = './signup.php';</script>"; 
+        window.location.href = './GUI_SignUp.php';</script>"; 
     } else {
     
         $result = mysqli_query($db, $sql);
         
-        if($result)
-        {
-            echo "Your details have been saved, ".$patientName.".";
-        }
-        else 
-        {
+        if(!$result) {
             echo mysqli_error($db);
             db_disconnect($db);
-            exit;
         }
+        
+        echo "<script type=\"text/javascript\">window.alert('Your details were successfully saved');
+        window.location.href = './Index.php';</script>"; 
     }
     
 ?>

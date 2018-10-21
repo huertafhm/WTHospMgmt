@@ -9,7 +9,7 @@ include(SHARED_PATH . '/PatientDashboard.php');
 
 <?php 
    
-    $currentDate = date("Y-m-d G:i");
+    $currentDate = date("Y-m-d");
     $patientId = $_SESSION['userId'];
     $selectedDoctor = isset($_POST['doctorId']) ? $_POST['doctorId'] : " ";
     $timeSlots = array("09:00:00", "09:30:00", "10:00:00", "10:30:00", "11:00:00", 
@@ -31,11 +31,11 @@ include(SHARED_PATH . '/PatientDashboard.php');
         $sql1 = "SELECT name FROM doctor WHERE doctorId='".$selectedDoctor."'";
         $resultDoctor = mysqli_query($db, $sql1);
         $doctor = mysqli_fetch_assoc($resultDoctor);
-        $doctorName = $doctor['name'];
         
         $sql2 = "SELECT CAST(appointmentDate as time) as time ";
-        $sql2 .= "FROM appointment WHERE doctorId = '".$selectedDoctor."' ";
-        $sql2 .= "AND appointmentDate > '".$lookUpDate."' AND appointmentDate < '".$lookUpDatePlus."'";
+        $sql2 .= "FROM appointment WHERE doctorId = '".$selectedDoctor."' AND appointmentDate > '";
+        $sql2 .= $lookUpDate;
+        $sql2 .= "' AND appointmentDate < '".$lookUpDatePlus."'";
         $resultTimes = mysqli_query($db, $sql2);
     }
     
@@ -81,35 +81,43 @@ include(SHARED_PATH . '/PatientDashboard.php');
                     <div class="form-group row mt-4">
                        	<label class="col-form-label col-md-2">Day:</label>
             			<div class="col-md-2">
-            				<input type="date" name="lookUpDate" id="dateinput" value="<?php echo $lookUpDate;?>">
+            				<input type="date" name="lookUpDate" id="dateinput" min="<?php echo $currentDate?>" value="<?php echo $lookUpDate;?>">
                        	</div>                       	
             		</div>
             		<input type="submit" name="lookUpAvailability" value="Search Availability" />   
             	</fieldset>
             </form>
             
-            <form action="DB_RegisterAppointment" method="post">
-            <?php 
-            if (isset($_POST['doctorId'])) {
-                
-                echo "<div style=\"margin-top: 30px; margin-bottom: 30px\">Select an available time:</div>";
-                
-                $usedSlots = array();
-                
-                while ($usedSlot = mysqli_fetch_assoc($resultTimes)) {
-                    array_push($usedSlots, $usedSlot['time']);
+            <form action="DB_RegisterAppointment.php" method="post">
+                <?php 
+                    if (isset($_POST['doctorId'])) {
+                        
+                        echo "<div style=\"margin-top: 30px; margin-bottom: 30px\">Select an available time:</div>";
+                        
+                        $usedSlots = array();
+                        
+                        while ($usedSlot = mysqli_fetch_assoc($resultTimes)) {
+                            array_push($usedSlots, $usedSlot['time']);
+                        }
+                        
+                        foreach ($timeSlots as &$slot) {
+                            
+                            if (in_array($slot, $usedSlots)) {} else {
+                            echo "<div><input type=\"radio\" id=\"$slot\"
+                                    name=\"selectedDate\" value=\"$lookUpDate $slot\"/>
+                                  <label for=\"$slot\">$slot</label></div>";}
+                            
+                        }
+                    }
+                ?>
+                <input type="hidden" value="<?php echo $selectedDoctor;?>" name="doctorId" />
+                <input type="hidden" value="<?php echo $patientId?>" name="patientId" />
+                <?php 
+                if (isset($_POST['doctorId'])) {
+                    echo "<input style=\"margin-top: 30px; margin-bottom: 30px\" type=\"submit\" name=\"registerAppointment\" value=\"Save Appointment\" />";
                 }
-                
-                foreach ($timeSlots as &$slot) {
-                    
-                    if (in_array($slot, $usedSlots)) {} else {
-                    echo "<div><input type=\"radio\" id=\"$slot\"
-                            name=\"selectedTime\" value=\"$slot\"/>
-                          <label for=\"$slot\">$slot</label></div>";}
-                    
-                }
-            }
-            ?>
+                ?>
+            </form>
         </td>        
     	<td width="10%"></td>
 	</table>
