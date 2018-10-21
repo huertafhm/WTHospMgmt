@@ -87,19 +87,26 @@ include(SHARED_PATH . '/PatientDashboard.php');
             		<input type="submit" name="lookUpAvailability" value="Search Availability" />   
             	</fieldset>
             </form>
+            
+            <form action="DB_RegisterAppointment" method="post">
             <?php 
             if (isset($_POST['doctorId'])) {
+                
                 echo "<div style=\"margin-top: 30px; margin-bottom: 30px\">Select an available time:</div>";
-                foreach ($timeSlots as &$slot) {
-                    echo "<div>
-                        <input type=\"radio\" id=\"$slot\"
-                            name=\"selectedTime\" value=\"$slot\"/>
-                        <label for=\"$slot\">$slot</label>
-                    </div>";
-                }
+                
+                $usedSlots = array();
                 
                 while ($usedSlot = mysqli_fetch_assoc($resultTimes)) {
-                    echo $usedSlot['time'];
+                    array_push($usedSlots, $usedSlot['time']);
+                }
+                
+                foreach ($timeSlots as &$slot) {
+                    
+                    if (in_array($slot, $usedSlots)) {} else {
+                    echo "<div><input type=\"radio\" id=\"$slot\"
+                            name=\"selectedTime\" value=\"$slot\"/>
+                          <label for=\"$slot\">$slot</label></div>";}
+                    
                 }
             }
             ?>
