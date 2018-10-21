@@ -12,14 +12,15 @@ include(SHARED_PATH . '/PatientDashboard.php');
     $currentDate = date("Y-m-d G:i");
     $patientId = $_SESSION['userId'];
     $selectedDoctor = isset($_POST['doctorId']) ? $_POST['doctorId'] : " ";
+    $timeSlots = array("09:00:00", "09:30:00", "10:00:00", "10:30:00", "11:00:00", 
+        "11:30:00", "12:00:00", "12:30:00", "13:00:00", "13:30:00");
     
     if (isset($_POST['lookUpDate'])) {
         $lookUpDate = $_POST['lookUpDate'];
     } else {
         $lookUpDate = date("Y-m-d");
     }
-    //$lookUpDate = isset($_POST['lookUpDate']) ? $_POST['lookUpDate'] : " ";
-    
+    $lookUpDatePlus = date("Y-m-d", strtotime($lookUpDate . ' +1 day'));    
     
     //SQL command to retrieve doctors list
     $sql = "SELECT doctorId, name, specialty FROM doctor ORDER BY specialty";
@@ -27,10 +28,15 @@ include(SHARED_PATH . '/PatientDashboard.php');
     
     //If there is a doctor selected, retrieve his name and used slots
     if (isset($_POST['doctorId'])) {
-        $sql = "SELECT name FROM doctor WHERE doctorId='".$selectedDoctor."'";
-        $resultDoctor = mysqli_query($db, $sql);
+        $sql1 = "SELECT name FROM doctor WHERE doctorId='".$selectedDoctor."'";
+        $resultDoctor = mysqli_query($db, $sql1);
         $doctor = mysqli_fetch_assoc($resultDoctor);
         $doctorName = $doctor['name'];
+        
+        $sql2 = "SELECT CAST(appointmentDate as time) as time ";
+        $sql2 .= "FROM appointment WHERE doctorId = '".$selectedDoctor."' ";
+        $sql2 .= "AND appointmentDate > '".$lookUpDate."' AND appointmentDate < '".$lookUpDatePlus."'";
+        $resultTimes = mysqli_query($db, $sql2);
     }
     
 ?>
@@ -83,7 +89,18 @@ include(SHARED_PATH . '/PatientDashboard.php');
             </form>
             <?php 
             if (isset($_POST['doctorId'])) {
-                echo $doctorName."'s available slots on ".$lookUpDate." are:";
+                echo "<div style=\"margin-top: 30px; margin-bottom: 30px\">Select an available time:</div>";
+                foreach ($timeSlots as &$slot) {
+                    echo "<div>
+                        <input type=\"radio\" id=\"$slot\"
+                            name=\"selectedTime\" value=\"$slot\"/>
+                        <label for=\"$slot\">$slot</label>
+                    </div>";
+                }
+                
+                while ($usedSlot = mysqli_fetch_assoc($resultTimes)) {
+                    echo $usedSlot['time'];
+                }
             }
             ?>
         </td>        
@@ -95,5 +112,5 @@ include(SHARED_PATH . '/PatientDashboard.php');
 	</body>
 </html>
 	
-	
+<h1 style="margin-top: 30px"></h1>
 <?php include(SHARED_PATH . '/footer.php'); ?>
