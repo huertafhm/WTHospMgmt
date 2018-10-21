@@ -1,6 +1,6 @@
-<?php require_once('../private/initialize.php'); ?>
-
-<?php ?>
+<?php 
+session_start();
+require_once('../private/initialize.php'); ?>
 
 <!doctype html>
 
@@ -27,18 +27,19 @@
                             <a class="nav-link text-white" href="#">Home <span class="sr-only">(current)</span></a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Visit History</a>
+                            <a class="nav-link text-white" href="#GUI_VisitHistory.php">Visit History</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Doctors</a>
+                            <a class="nav-link text-white" href="#">Make Appointment</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Appointment</a>
+                            <a class="nav-link text-white" href="#">Current Appointments</a>
                           </li>
                           <li class="nav-item">
                             <a style="float:right" class="nav-link text-white" href="index.php">Log Out</a>
                           </li>
                         </ul>
+                        Welcome <?php echo $_SESSION['userName'];?>
                       </div>
                      </div>
                 </nav>

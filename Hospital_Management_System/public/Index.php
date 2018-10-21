@@ -1,4 +1,6 @@
-<?php require_once('../private/initialize.php'); ?>
+<?php 
+session_start();
+require_once('../private/initialize.php'); ?>
 
 <?php include(SHARED_PATH . '/header.php'); ?>
 	<div class="container">
@@ -10,6 +12,11 @@
     					<div class="col-sm"></div>
     					<div class="col-sm">
     						<h2>Log In</h2>
+    						<?php     						
+    						    if(!$_SESSION['userType']){
+    						        echo "<div style=\"color:red\">Invalid credentials</div>\n";
+    						    }
+    						?>
     						<dl>
     							<dt><label class="form-control-label">Email: </label></dt>
     							<dd>
