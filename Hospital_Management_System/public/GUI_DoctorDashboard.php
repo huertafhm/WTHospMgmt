@@ -30,7 +30,7 @@ require_once('../private/initialize.php'); ?>
                             <a class="nav-link text-white" href="#">Appointment History</a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Current Appointments</a>
+                            <a class="nav-link text-white" href="GUI_CurrentAppointments.php">Current Appointments</a>
                           </li>
                           <li class="nav-item">
                             <a class="nav-link text-white" style="float:right" href="index.php">Log Out</a>

@@ -15,13 +15,13 @@
     //Depending on the match, the session variable 'userType' is assigned to
     // 1 for patient, 2 for doctor and 0 if login details were invalid
     if ($resultPatient->num_rows > 0){
-        $_SESSION['userType'] = 1;
+        $_SESSION['userType'] = 2;
         $user = mysqli_fetch_assoc($resultPatient);
         $_SESSION['userId'] = $user['patientId'];
         $_SESSION['userName'] = $user['name'];
         header('location: GUI_PatientDashboard.php');
     } else if ($resultDoctor->num_rows > 0) {
-        $_SESSION['userType'] = 2;
+        $_SESSION['userType'] = 1;
         $user = mysqli_fetch_assoc($resultDoctor);
         $_SESSION['userId'] = $user['doctorId'];
         $_SESSION['userName'] = $user['name'];
