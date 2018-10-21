@@ -1,7 +1,7 @@
 <?php ?>
 
-		<footer class="footer-copyright jumbotron bg-info text-white pt-4">
-			<div class="container">
+		<footer class="footer-copyright jumbotron bg-info text-white">
+			<div style="text-align: center" class="container">
 				&copy; <?php echo date('Y')?> 7 Star Hospital
 			</div>
 		</footer>
