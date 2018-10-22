@@ -22,28 +22,28 @@
     if (!preg_match($regexpMobile,$patientMobile)) {
         $errorData = true;
         echo "<script type=\"text/javascript\">window.alert('Insert your 10-digit phone');
-        window.location.href = './GUI_SignUp.php';</script>";
+        window.history.go(-1);</script>";
     }
     
     $regexpEmail = "/^(([^<>()\[\]\\.,;:\s@\"]+(\.[^<>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
     if (!preg_match($regexpEmail,$patientEmail)) {
         $errorData = true;
         echo "<script type=\"text/javascript\">window.alert('Insert a valid e-mail');
-        window.location.href = './GUI_SignUp.php';</script>";
+        window.history.go(-1);</script>";
     }
     
     $regexpAge = "/^(0?[1-9]|[1-9][0-9]|[1][0-2][0-9]|130)$/";
     if (!preg_match($regexpAge,$patientAge)) {
         $errorData = true;
         echo "<script type=\"text/javascript\">window.alert('Insert your age');
-        window.location.href = './GUI_SignUp.php';</script>";
+        window.history.go(-1);</script>";
     }
     
     $regexpPassword = "/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/";
     if (!preg_match($regexpPassword,$patientpassword)) {
         $errorData = true;
         echo "<script type=\"text/javascript\">window.alert('Password must contain a minimum of 8 characters, a letter and a number');
-        window.location.href = './GUI_SignUp.php';</script>";
+        window.history.go(-1);</script>";
     }
        
 
